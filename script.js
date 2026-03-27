@@ -209,3 +209,49 @@ document.addEventListener('paste', function(e) {
 document.addEventListener('selectstart', function(e) {
     e.preventDefault();
 });
+
+// 许可证窗口功能
+window.addEventListener('load', function() {
+    const licenseBtn = document.querySelector('.license-btn');
+    const licenseModal = document.getElementById('license-modal');
+    const closeBtn = document.querySelector('.close-btn');
+
+    // 打开许可证窗口
+    if (licenseBtn) {
+        licenseBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (licenseModal) {
+                licenseModal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // 防止背景滚动
+            }
+        });
+    }
+
+    // 关闭许可证窗口
+    function closeLicenseModal() {
+        if (licenseModal) {
+            licenseModal.classList.remove('active');
+            document.body.style.overflow = 'auto'; // 恢复背景滚动
+        }
+    }
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeLicenseModal);
+    }
+
+    // 点击窗口外部关闭
+    if (licenseModal) {
+        licenseModal.addEventListener('click', function(e) {
+            if (e.target === licenseModal) {
+                closeLicenseModal();
+            }
+        });
+    }
+
+    // 按ESC键关闭
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && licenseModal && licenseModal.classList.contains('active')) {
+            closeLicenseModal();
+        }
+    });
+});

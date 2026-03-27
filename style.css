@@ -382,3 +382,154 @@ body {
 html {
     scroll-behavior: smooth;
 }
+
+/* 许可证窗口样式 */
+.license-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.license-modal.active {
+    display: flex;
+}
+
+.license-content {
+    background-color: var(--bg-secondary);
+    border-radius: 12px;
+    width: 95%;
+    max-width: 1000px;
+    max-height: 90vh;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    animation: modalFadeIn 0.3s ease;
+}
+
+.license-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--bg-tertiary);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.license-header h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 24px;
+    cursor: pointer;
+    transition: color var(--transition-speed) ease;
+}
+
+.close-btn:hover {
+    color: var(--text-primary);
+}
+
+.license-body {
+    padding: 25px;
+    max-height: 70vh;
+    overflow-y: auto;
+    line-height: 1.6;
+    text-align: left !important;
+}
+
+.license-body p {
+    margin-bottom: 15px;
+    color: var(--text-secondary);
+    font-size: 14px;
+    text-align: left !important;
+}
+
+.license-body h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 20px 0 10px;
+}
+
+.license-body ul {
+    margin: 10px 0 15px 20px;
+    color: var(--text-secondary);
+}
+
+.license-body li {
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+/* 许可证按钮样式 */
+.license-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-secondary);
+    transition: all var(--transition-speed) ease;
+}
+
+.license-btn:hover {
+    color: var(--accent-primary);
+    transform: translateY(-5px);
+}
+
+.license-btn img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
+    border-radius: 8px;
+    padding: 8px;
+    transition: none;
+    border: 1px solid #ff416c;
+}
+
+.license-btn:hover img {
+    background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
+    filter: none;
+}
+
+.license-btn span {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* 动画效果 */
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .license-content {
+        width: 95%;
+        max-height: 95vh;
+    }
+    
+    .license-body {
+        padding: 20px;
+        max-height: 60vh;
+    }
+}
